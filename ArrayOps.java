@@ -1,36 +1,53 @@
 public class ArrayOps {
     public static void main(String[] args) {
-       
+
     }
-    
+    public static boolean contains(int[] arr, int value) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == value) {
+                return true;
+            }
+        }
+        return false ;
+    }
     public static int findMissingInt (int [] array) {
         // Write your code here:
-        int n = array.length+1;
-        int sum = (n *(n+1)) / 2; // the sum of numbers from 0 to n
-        int actualSum = 0; // the sum of the array with the missing int
-        int missingInt;
-        for (int i = 0; i<array.length; i++) {
-           actualSum += array[i];
+        for (int i = 0; i<array.length;i++) {
+           if(!contains(array,i)) {
+               return i;
+           }
         }
-        missingInt = sum - actualSum; // check what is the missing int
-        return missingInt;
+        return -1;
     }
 
     public static int secondMaxValue(int [] array) {
         // Write your code here:
-        int largest = Integer.MIN_VALUE;
-        int secondLargest = Integer.MIN_VALUE;
-        for (int i = 0; i<array.length; i++) {
-            if(array[i]>largest) {
-                secondLargest = largest;
-                largest = array[i];
-            }
-            else if (array[i] > secondLargest && array[i] !=largest ) {
-                secondLargest = array[i];
+
+        int [] newArray = new int [array.length];
+        int max = array[0];
+        int maxIndex = 0;
+        for(int i = 0; i<array.length; i++) {
+            newArray[i] = array[i];
+            if(newArray[i]>max) {
+                max = newArray[i];
+                maxIndex = i;
             }
         }
-        return secondLargest;
+        int temp = newArray[newArray.length-1];
+        newArray[newArray.length-1] = max;
+        newArray[maxIndex] = temp;
+
+        int secondMax = 0;
+        for (int i = 0; i<newArray.length-1; i++) {
+            if(newArray[i]>max) {
+                secondMax = newArray[i];
+            }
+        }
+
+        return secondMax;
     }
+
+
     public static boolean contains(int[] arr, int value, int index) {
         for (int i = 0; i < index; i++) {
             if (arr[i] == value) {
