@@ -1,6 +1,7 @@
 public class ArrayOps {
     public static void main(String[] args) {
-
+        int [] arr = {1,2,3,4,5};
+        System.out.println(secondMaxValue(arr));
     }
     public static boolean contains(int[] arr, int value) {
         for (int i = 0; i < arr.length; i++) {
@@ -24,12 +25,15 @@ public class ArrayOps {
         // Write your code here:
 
         int [] newArray = new int [array.length];
-        int max = array[0];
-        int maxIndex = 0;
+
         for(int i = 0; i<array.length; i++) {
             newArray[i] = array[i];
-            if(newArray[i]>max) {
-                max = newArray[i];
+        }
+        int max = newArray[0];
+        int maxIndex = 0;
+        for(int i = 0; i<newArray.length; i++) {
+            if(newArray[i]>=max) {
+                max = array[i];
                 maxIndex = i;
             }
         }
@@ -38,8 +42,9 @@ public class ArrayOps {
         newArray[maxIndex] = temp;
 
         int secondMax = 0;
+        int newArrayMax = newArray[0];
         for (int i = 0; i<newArray.length-1; i++) {
-            if(newArray[i]>max) {
+            if(newArray[i]>=newArrayMax) {
                 secondMax = newArray[i];
             }
         }
