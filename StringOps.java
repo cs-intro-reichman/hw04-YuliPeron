@@ -22,8 +22,17 @@ public class StringOps {
     //////                                               ///////
     ////////////////////////////////////////////////////////////
     public static void main(String[] args) {
-        String str = "   Intro to coMPUter   sCIEncE";
-        System.out.println(camelCase(str));
+        String str = "Hello world";
+        char c ='l';
+        print(allIndexOf(str,c));
+    }
+    public static int print (int[] arr) {
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i]+ " ");
+        }
+        System.out.println();
+        return -1;
     }
 
     public static String capVowelsLowRest (String string) {
@@ -101,6 +110,20 @@ public class StringOps {
 
     public static int[] allIndexOf (String string, char chr) {
         // Write your code here:
-        return new int[1];
+        int arraySize =0;
+        for(int i = 0; i<string.length(); i++){
+            if(string.charAt(i) == chr) {
+                arraySize++;
+            }
+        }
+        int [] array = new int [arraySize];
+        int index =0;
+        for (int i = 0; i<string.length(); i++) {
+            if(string.charAt(i) == chr) {
+                array[index] = i;
+                index++;
+            }
+        }
+        return array;
     }
 }
